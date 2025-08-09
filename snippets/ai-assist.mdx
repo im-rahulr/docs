@@ -1,28 +1,29 @@
+import { useState } from 'react';
+
 export const AIAssist = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const openWithPrompt = (provider) => {
     try {
-      const pageUrl = window.location.href;
+      const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
       const text = `Help me with this docs page: ${pageUrl}`;
       const encoded = encodeURIComponent(text);
 
-      // Copy URL to clipboard (best effort)
-      if (navigator?.clipboard?.writeText) {
+      if (typeof navigator !== 'undefined' && navigator?.clipboard?.writeText) {
         navigator.clipboard.writeText(pageUrl).catch(() => {});
       }
 
       let target = '';
       if (provider === 'chatgpt') {
-        // ChatGPT share/query page
         target = `https://chat.openai.com/?q=${encoded}`;
       } else if (provider === 'gemini') {
-        // Gemini app new chat with prompt
         target = `https://gemini.google.com/app?hl=en&q=${encoded}`;
       }
 
-      if (target) window.open(target, '_blank', 'noopener,noreferrer');
-    } catch (e) {
-      // noop
-    }
+      if (target && typeof window !== 'undefined') {
+        window.open(target, '_blank', 'noopener,noreferrer');
+      }
+    } catch {}
   };
 
   return (
@@ -30,42 +31,76 @@ export const AIAssist = () => {
       style={{
         position: 'fixed',
         right: '16px',
-        bottom: '16px',
+        top: '16px',
         zIndex: 1000,
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'flex-end',
         gap: '8px',
       }}
     >
+      {isOpen && (
+        <div
+          style={{
+            background: 'rgba(0,0,0,0.9)',
+            color: '#fff',
+            padding: '8px',
+            borderRadius: '12px',
+            display: 'flex',
+            gap: '8px',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.25)'
+          }}
+        >
+          <button
+            onClick={() => openWithPrompt('chatgpt')}
+            style={{
+              background: '#10A37F',
+              color: '#fff',
+              border: 'none',
+              padding: '8px 12px',
+              borderRadius: '10px',
+              cursor: 'pointer',
+              fontWeight: 600
+            }}
+          >
+            ChatGPT
+          </button>
+          <button
+            onClick={() => openWithPrompt('gemini')}
+            style={{
+              background: '#1A73E8',
+              color: '#fff',
+              border: 'none',
+              padding: '8px 12px',
+              borderRadius: '10px',
+              cursor: 'pointer',
+              fontWeight: 600
+            }}
+          >
+            Gemini
+          </button>
+        </div>
+      )}
+
       <button
-        onClick={() => openWithPrompt('chatgpt')}
+        onClick={() => setIsOpen((v) => !v)}
         style={{
-          background: '#10A37F',
+          background: '#000000',
           color: '#fff',
-          border: 'none',
+          border: '1px solid rgba(255,255,255,0.12)',
           padding: '10px 14px',
           borderRadius: '999px',
           cursor: 'pointer',
           fontWeight: 600,
-          boxShadow: '0 6px 18px rgba(0,0,0,0.15)'
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          boxShadow: '0 6px 18px rgba(0,0,0,0.25)'
         }}
+        aria-label="Ask AI"
       >
-        Ask ChatGPT
-      </button>
-      <button
-        onClick={() => openWithPrompt('gemini')}
-        style={{
-          background: '#1A73E8',
-          color: '#fff',
-          border: 'none',
-          padding: '10px 14px',
-          borderRadius: '999px',
-          cursor: 'pointer',
-          fontWeight: 600,
-          boxShadow: '0 6px 18px rgba(0,0,0,0.15)'
-        }}
-      >
-        Ask Gemini
+        <span style={{ filter: 'grayscale(1) brightness(1.2)' }}>✨</span>
+        Ask AI
       </button>
     </div>
   );
