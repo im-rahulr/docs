@@ -1,0 +1,45 @@
+---
+title: 'Ask AI'
+description: 'Send the current page URL to ChatGPT and start a conversation.'
+---
+
+import { useEffect } from 'react';
+
+export default function AskAIPage() {
+  useEffect(() => {
+    try {
+      const referrer = document.referrer || window.sessionStorage.getItem('lastVisitedUrl') || window.location.origin;
+      window.sessionStorage.setItem('lastVisitedUrl', referrer);
+
+      // Attempt to copy the referrer/current URL to clipboard
+      const urlToShare = referrer || window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(urlToShare).catch(() => {});
+      }
+
+      // Open ChatGPT with a prefilled prompt containing the URL
+      const prompt = encodeURIComponent(
+        `Please summarize and answer questions about this documentation page: ${urlToShare}`
+      );
+
+      // ChatGPT new chat with prefilled prompt (works when logged in)
+      const chatUrl = `https://chat.openai.com/?q=${prompt}`;
+      window.open(chatUrl, '_blank', 'noopener,noreferrer');
+    } catch (error) {
+      // No-op; page will still render a manual fallback link
+    }
+  }, []);
+
+  return (
+    <div>
+      <h1>Opening ChatGPT…</h1>
+      <p>
+        If a new tab didn't open, copy your current page URL and paste it into
+        ChatGPT with your question.
+      </p>
+      <a href="https://chat.openai.com/" target="_blank" rel="noreferrer noopener">Open ChatGPT</a>
+    </div>
+  );
+}
+
+

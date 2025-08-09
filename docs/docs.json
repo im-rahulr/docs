@@ -1,0 +1,103 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Rahul Docs",
+  "colors": {
+    "primary": "#3B82F6",
+    "light": "#60A5FA",
+    "dark": "#1D4ED8"
+  },
+  "favicon": "/favicon.svg",
+  "logo": {
+    "light": "/logo/text-light.svg",
+    "dark": "/logo/text-dark.svg"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Product Guides",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "index",
+              "quickstart",
+              "development"
+            ]
+          },
+          {
+            "group": "AI Development Tools",
+            "pages": [
+              "products/task-master-ai",
+              "products/codecraft-cli"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API Documentation",
+            "pages": [
+              "api-reference/introduction"
+            ]
+          },
+          {
+            "group": "Endpoint Examples",
+            "pages": [
+              "api-reference/endpoint/get",
+              "api-reference/endpoint/create",
+              "api-reference/endpoint/delete",
+              "api-reference/endpoint/webhook"
+            ]
+          }
+        ]
+      }
+    ],
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Portfolio",
+          "href": "https://im-rahul.netlify.app/#",
+          "icon": "user"
+        },
+        {
+          "anchor": "GitHub",
+          "href": "https://github.com/im-rahulr",
+          "icon": "github"
+        },
+        {
+          "anchor": "Contact",
+          "href": "https://im-rahul.netlify.app/#contact",
+          "icon": "envelope"
+        }
+      ]
+    }
+  },
+  
+  "navbar": {
+    "links": [
+      {
+        "label": "Portfolio",
+        "href": "https://im-rahul.netlify.app/#"
+      },
+      {
+        "label": "Contact",
+        "href": "https://im-rahul.netlify.app/#contact"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Ask AI",
+      "href": "/ask-ai"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/im-rahulr",
+      "linkedin": "https://linkedin.com/in/rahul-r-developer",
+      "website": "https://im-rahul.netlify.app/#"
+    }
+  }
+}

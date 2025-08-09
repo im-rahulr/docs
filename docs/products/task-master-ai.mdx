@@ -1,0 +1,158 @@
+---
+title: "Task Master AI"
+description: "A task management system for AI-driven development with Claude, designed to work seamlessly with Cursor AI."
+icon: "tasks"
+---
+
+import AICheck from '/snippets/ai-check.mdx';
+
+<AICheck />
+
+# Task Master AI
+
+A task management system for AI-driven development with Claude, designed to work seamlessly with Cursor AI.
+
+## 🧩 1. Install prerequisites
+
+**Node.js & npm**: Make sure they're installed (`node --version`, `npm --version`).
+
+**Task Master CLI**:
+
+```bash
+npm install -g task-master-ai
+```
+
+Confirm it's working:
+
+```bash
+task-master --version
+```
+
+## 📦 2. Install the VS Code extension
+
+You have two main options:
+
+### Option A: From the marketplace
+1. Open VS Code.
+2. Press `Ctrl+Shift+X` (`⌘+Shift+X` on Mac).
+3. Search for "Claude Task Master Visual Interface" (or just "Task Master").
+4. Click Install.
+
+### Option B: From source or VSIX file
+1. Clone the GitHub repo:
+```bash
+git clone https://github.com/DevDreed/claude-task-master-extension.git
+cd claude-task-master-extension
+npm install
+npm run compile
+```
+
+2. In VS Code, press `Ctrl+Shift+P`, type `Extensions: Install from VSIX`, and select the `.vsix` you built.
+
+## 🚀 3. Initialize your project
+
+Inside your project folder, run:
+
+```bash
+task-master init
+```
+
+This creates a `.taskmaster` folder with necessary files.
+
+Optionally, add a PRD file (Project Requirements Doc):
+
+```
+.taskmaster/docs/prd.txt
+```
+
+You can parse it into tasks using:
+
+```bash
+task-master parse-prd --input=.taskmaster/docs/prd.txt
+```
+
+## ⚙️ 4. Set up AI model integration (optional but helpful)
+
+To let the extension communicate with the AI (via an MCP server):
+
+Create or edit:
+```
+.cursor/mcp.json   (or .vscode/mcp.json)
+```
+
+Add your API keys:
+
+```json
+{
+  "mcpServers":{
+    "taskmaster-ai":{
+      "command":"npx",
+      "args":["-y","--package=task-master-ai","task-master-ai"],
+      "env":{
+        "ANTHROPIC_API_KEY":"YOUR_ANTHROPIC_KEY",
+        "PERPLEXITY_API_KEY":"YOUR_PERPLEXITY_KEY",
+        "OPENAI_API_KEY":"YOUR_OPENAI_KEY"
+      }
+    }
+  }
+}
+```
+
+Save, then restart VS Code.
+
+## 🖥️ 5. Use Task Master inside VS Code
+
+- **Sidebar view**: Shows tasks with status, dependencies, tags
+- **Status bar**: Displays the "next task" and progress
+- **Commands** (via `Ctrl+Shift+P`): Refresh tasks, show next, add task, filter, analyze complexity, expand tasks
+- **Right-click on tasks**: mark as done/in-progress/blocked, add subtasks, set dependencies
+
+## 🚧 6. Optional: Add Kanban board
+
+Want a kanban-style view? Install **Taskr: Task Master Kanban** extension:
+
+- Displays columns like To‑Do, In Progress, Review, Done
+- Drag and drop tasks to update status
+- Uses MCP server too
+
+## 🛠️ 7. Configure settings
+
+In `settings.json` (VS Code settings), add:
+
+```json
+{
+  "claudeTaskMaster.autoRefresh": true,
+  "claudeTaskMaster.taskmasterPath": "task-master-ai",
+  // If you use Kanban:
+  "taskr.mcpServerCommand": "npx",
+  "taskr.mcpServerArgs": ["-y","--package=task-master-ai","task-master-ai"]
+}
+```
+
+You can adjust logging, auto-refresh, and server settings.
+
+## ✔️ 8. Quick workflow
+
+1. `task-master parse-prd` (if using PRD).
+2. In VS Code, refresh tasks.
+3. Pick your next task from the sidebar or status bar.
+4. Right-click → Mark as In Progress.
+5. Follow it, update/subtask as needed (AI can help optimize tasks).
+6. When done → Mark as Complete, then continue.
+
+## ✅ Summary
+
+| Step | Action |
+|------|--------|
+| 1 | Install Node.js & task-master-ai CLI |
+| 2 | Install the VS Code extension |
+| 3 | Run `task-master init` in your project |
+| 4 | (Optional) Add API keys in MCP config |
+| 5 | Use the sidebar, status bar, and commands to manage tasks |
+| 6 | (Optional) Add a Kanban board via Taskr |
+| 7 | Tweak settings for auto-refresh & AI tools |
+| 8 | Work tasks, update progress, repeat! |
+
+---
+
+**Developed by Rahul** | [Portfolio](https://im-rahul.netlify.app/#) | [GitHub](https://github.com/im-rahulr)
