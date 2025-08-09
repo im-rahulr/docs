@@ -67,20 +67,17 @@
         {
           "anchor": "Portfolio",
           "href": "https://im-rahul.netlify.app/#",
-          "icon": "user",
-          "color": "#22C55E"
+          "icon": "user"
         },
         {
           "anchor": "GitHub",
           "href": "https://github.com/im-rahulr",
-          "icon": "github",
-          "color": "#22C55E"
+          "icon": "github"
         },
         {
           "anchor": "Contact",
           "href": "https://im-rahul.netlify.app/#contact",
-          "icon": "envelope",
-          "color": "#22C55E"
+          "icon": "envelope"
         }
       ]
     }
