@@ -5,11 +5,7 @@
   "colors": {
     "primary": "#22C55E",
     "light": "#34D399",
-    "dark": "#16A34A",
-    "background": {
-      "light": "#F8FAFC",
-      "dark": "#000000"
-    }
+    "dark": "#16A34A"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -71,17 +67,20 @@
         {
           "anchor": "Portfolio",
           "href": "https://im-rahul.netlify.app/#",
-          "icon": "user"
+          "icon": "user",
+          "color": "#22C55E"
         },
         {
           "anchor": "GitHub",
           "href": "https://github.com/im-rahulr",
-          "icon": "github"
+          "icon": "github",
+          "color": "#22C55E"
         },
         {
           "anchor": "Contact",
           "href": "https://im-rahul.netlify.app/#contact",
-          "icon": "envelope"
+          "icon": "envelope",
+          "color": "#22C55E"
         }
       ]
     }
