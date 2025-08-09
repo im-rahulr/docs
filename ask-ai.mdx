@@ -1,0 +1,38 @@
+---
+title: Ask AI
+description: Send this page to ChatGPT or Gemini
+---
+
+export default function AskAIPage() {
+  const open = (provider) => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get('ref') || document.referrer || window.location.origin;
+      const text = `Help me with this docs page: ${ref}`;
+      const encoded = encodeURIComponent(text);
+      let url = '';
+      if (provider === 'chatgpt') url = `https://chat.openai.com/?q=${encoded}`;
+      if (provider === 'gemini') url = `https://gemini.google.com/app?hl=en&q=${encoded}`;
+      if (navigator?.clipboard?.writeText) navigator.clipboard.writeText(ref).catch(() => {});
+      if (url) window.open(url, '_blank', 'noopener,noreferrer');
+    } catch {}
+  };
+
+  if (typeof window !== 'undefined') {
+    // Append current page as ref if arriving directly
+    const url = new URL(window.location.href);
+    if (!url.searchParams.get('ref') && document.referrer === '') {
+      url.searchParams.set('ref', window.location.origin);
+      history.replaceState({}, '', url.toString());
+    }
+  }
+
+  return (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <button onClick={() => open('chatgpt')} style={{ background:'#10A37F', color:'#fff', border:'none', padding:'10px 14px', borderRadius:8, cursor:'pointer', fontWeight:600 }}>Ask ChatGPT</button>
+      <button onClick={() => open('gemini')} style={{ background:'#1A73E8', color:'#fff', border:'none', padding:'10px 14px', borderRadius:8, cursor:'pointer', fontWeight:600 }}>Ask Gemini</button>
+    </div>
+  );
+}
+
+

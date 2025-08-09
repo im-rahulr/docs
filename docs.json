@@ -59,6 +59,10 @@
   "navbar": {
     "links": [
       {
+        "label": "Ask AI",
+        "href": "/ask-ai"
+      },
+      {
         "label": "Contact",
         "href": "https://im-rahul.netlify.app/#contact"
       }
