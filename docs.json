@@ -61,26 +61,7 @@
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Portfolio",
-          "href": "https://im-rahul.netlify.app/#",
-          "icon": "user"
-        },
-        {
-          "anchor": "GitHub",
-          "href": "https://github.com/im-rahulr",
-          "icon": "github"
-        },
-        {
-          "anchor": "Contact",
-          "href": "https://im-rahul.netlify.app/#contact",
-          "icon": "envelope"
-        }
-      ]
-    }
+    ]
   },
   "modeToggle": {
     "default": "dark",
