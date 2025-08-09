@@ -3,9 +3,13 @@
   "theme": "mint",
   "name": "Rahul's Doc",
   "colors": {
-    "primary": "#3B82F6",
-    "light": "#60A5FA",
-    "dark": "#1D4ED8"
+    "primary": "#22C55E",
+    "light": "#34D399",
+    "dark": "#16A34A",
+    "background": {
+      "light": "#F8FAFC",
+      "dark": "#000000"
+    }
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -82,9 +86,9 @@
       ]
     }
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+  "modeToggle": {
+    "default": "dark",
+    "isHidden": true
   },
   "navbar": {
     "links": [
