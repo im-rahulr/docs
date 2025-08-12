@@ -1,341 +1,411 @@
 ---
-title: "CodeCraft CLI"
-description: "A powerful command-line AI workflow tool that connects to your development tools, understands your code, and accelerates your workflows."
 icon: "terminal"
+title: "Codec CLI – Comprehensive Documentation"
 ---
 
-import AIAssist from '/snippets/ai-assist.mdx';
-<AIAssist />
+## Overview
 
-# CodeCraft CLI
+The **Codec CLI** is a powerful, AI-driven command-line tool engineered to optimize and accelerate the modern developer's workflow. It stands as an evolution of the Google Gemini CLI, specifically refined and optimized to leverage the advanced capabilities of Qwen3-Coder models. Codec's core mission is to minimize context-switching and automate repetitive tasks, enabling developers to stay focused and productive directly within their terminal environment.
 
-CodeCraft CLI is a powerful command-line AI workflow tool that connects to your development tools, understands your code, and accelerates your workflows. Built on Google's Gemini AI technology, CodeCraft provides an intelligent coding assistant right in your terminal.
+By integrating intelligent assistance, Codec transforms the command line from a simple execution interface into an interactive partner. It is designed for developers who need to:
 
-## ✨ Features
+- **Analyze and Edit Large Codebases:** Process and query extensive code repositories that exceed the context windows of traditional models, gaining deep insights into architecture and dependencies.
+- **Automate Repetitive Tasks:** Streamline common development chores, from git operations to file refactoring, reducing manual effort and potential for error.
+- **Integrate AI Assistance:** Generate boilerplate code, write unit tests, debug issues, and check for security vulnerabilities without leaving the terminal.
+- **Handle Complex Operations:** Efficiently manage intricate tasks like git rebases, pull request summaries, and bulk file modifications with natural language commands.
 
-With CodeCraft CLI you can:
+Codec is more than a simple wrapper; it is a meticulously crafted tool that provides intelligent code understanding, an enhanced parsing engine, and flexible multi-provider support, all designed to enhance development productivity.
 
-🔍 **Query and edit large codebases** in and beyond CodeCraft's 1M token context window
+## 1. Features in Detail
 
-🎨 **Generate new applications** from PDFs, sketches, or descriptions using CodeCraft's multimodal capabilities
+### Core Features
 
-⚡ **Automate operational tasks** like querying pull requests, handling complex rebases, and code reviews
+#### Intelligent Code Understanding & Editing
 
-🔧 **Extend functionality** with tools and MCP servers, including media generation capabilities
+Codec's primary strength lies in its ability to understand and reason about large codebases. Unlike simpler AI tools, it is not limited to a single file or a small snippet. Its enhanced parser, optimized for the Qwen3-Coder model, allows it to:
 
-🌐 **Ground your queries** with the Google Search tool built into CodeCraft
+- **Traverse Repository Structure:** Comprehend the relationships between files and modules across an entire project.
+- **Refactor with Context:** Refactor and optimize code not just for a single function but with a full understanding of its dependencies and impact on the broader system.
+- **Natural Language Queries:** Respond to complex queries like "Find all the places where `UserAuthenticationService` is used and explain how the data flows" with detailed, accurate analysis.
 
-💡 **Interactive coding assistance** with real-time suggestions and code generation
+#### Automated Workflow Enhancement
 
-## 🚀 Installation
+Codec is built to automate the tedious, repetitive tasks that often interrupt a developer's flow. Key automation capabilities include:
+
+- **Git Operations:** Generate a comprehensive summary of recent commits, create a clear and concise pull request description, or even suggest a fix for a merge conflict.
+- **Changelog Generation:** Automatically create a formatted changelog by analyzing recent git history, saving hours of manual review.
+- **Bulk File Modifications:** Rename files, update imports, or modify configurations across a large number of files with a single, high-level command.
+
+### Technical & Architectural Features
+
+#### Enhanced Parser
+
+The Codec parser is a key innovation, tailored specifically to maximize the performance of Qwen3-Coder models. It intelligently interprets file paths, code blocks, and conversational context to build a coherent representation of the project, allowing the AI to provide more accurate and relevant responses.
+
+#### Multi-Provider Support & Free Access
+
+Codec is designed for flexibility and accessibility. It allows developers to choose their preferred model provider.
+
+- **Qwen OAuth:** This is the recommended provider for most users, offering a generous **free tier of 2,000 requests per day** with no token count limits. This is ideal for high-volume daily use and is the easiest to set up.
+- **OpenAI-Compatible APIs:** Codec can be configured to work with any service that supports the OpenAI API standard, giving users the freedom to use a wide range of models and providers.
+- **Regional Free Tiers:** For users in specific regions, Codec supports providers like ModelScope (Mainland China), which offer additional free quotas, ensuring accessibility for a global audience.
+
+## 2. Installation
 
 ### Prerequisites
-- Node.js version 18 or higher
-- A Google account for authentication
 
-### Quick Install
-Install CodeCraft CLI globally using npm:
+To ensure the best performance and stability, Codec CLI requires **Node.js version 20.0.0 or higher**. This version is necessary for the tool's asynchronous operations and modern JavaScript features.
 
-```bash
-npm install -g codecraft-cli
+- **How to check your version:** Open your terminal and run `node --version`.
+- **How to install/update:** Download the latest installer from the official [Node.js website](https://nodejs.org/).
+
+### Installation Methods
+
+#### Install from npm (Recommended)
+
+This is the fastest and most straightforward way to get started.
+
+1. Open your terminal.
+2. Run the installation command:
+
+   ```
+   npm install -g codec@latest
+   
+   
+   ```
+
+   This command installs Codec globally, making it accessible from any directory.
+3. Verify the installation by checking the version:
+
+   ```
+   codec --version
+   
+   
+   ```
+
+#### Update to the Latest Version
+
+To ensure you have the latest features and bug fixes, simply run:
+
+```
+npm update -g codec
+
 ```
 
-### Verify Installation
-Check that CodeCraft CLI is installed correctly:
+#### Uninstall Codec
 
-```bash
-codecraft --version
+If you need to remove the tool, use the following command:
+
+```
+npm uninstall -g codec
+
 ```
 
-## 🛠️ Setup & Configuration
+#### Install from Source
 
-### 1. First Run
-Launch CodeCraft CLI:
+For developers who wish to contribute or need to customize the tool, you can install from source.
 
-```bash
-codecraft
+1. Clone the repository:
+
+   ```
+   git clone https://github.com/im-rahulr/qwen-code.git
+   
+   
+   ```
+2. Navigate into the project directory:
+
+   ```
+   cd qwen-code
+   
+   
+   ```
+3. Install the project dependencies:
+
+   ```
+   npm install
+   
+   
+   ```
+4. Build the project:
+
+   ```
+   npm run build
+   
+   
+   ```
+5. Install the local build globally:
+
+   ```
+   npm install -g .
+   
+   
+   ```
+
+## 3. Quick Start Guide
+
+Once installed, starting Codec is as simple as typing `codec` in your terminal.
+
+```
+codec
+
 ```
 
-### 2. Authentication Setup
-When you first run CodeCraft, you'll be prompted to authenticate:
+The CLI will launch and greet you with a prompt. You can then begin interacting with the AI.
 
-1. **Choose authentication method**: Sign in with your personal Google account
-2. **Browser authentication**: CodeCraft will open your browser for Google OAuth
-3. **Grant permissions**: Allow CodeCraft to access CodeCraft API on your behalf
+Here are a few initial commands to get you started:
 
-This grants you:
-- ✅ Up to 60 model requests per minute
-- ✅ 1,000 model requests per day using Gemini
-- ✅ Access to all Gemini models and capabilities
+- **Explain a codebase:**
 
-### 3. Theme Selection
-Choose your preferred color theme for the best terminal experience.
+  ```
+  > Explain the codebase structure
+  
+  
+  ```
+- **Refactor a function:**
 
-### 4. Advanced Authentication (Optional)
-For advanced use cases or higher limits, you can use an API key:
+  ```
+  > Help me refactor the `processData` function to use a more efficient algorithm
+  
+  
+  ```
+- **Generate unit tests:**
 
-1. Generate a key from Google AI Studio
-2. Set it as an environment variable:
+  ```
+  > Generate unit tests for the `user-auth` module
+  
+  
+  ```
 
-```bash
-export GEMINI_API_KEY="YOUR_API_KEY"
+**Example Walkthrough:**
+
+Let's say you've just cloned a new repository and need to understand its architecture.
+
+1. Navigate into the repository's root directory.
+2. Run `codec`.
+3. Enter the following prompt:
+
+   ```
+   > Describe the main pieces of this system's architecture and how they interact
+   
+   
+   ```
+
+Codec will process the entire repository (or a defined subset) and provide a high-level summary of the core modules, their responsibilities, and the data flow between them.
+
+## 4. Authorization Setup
+
+Codec supports a variety of authentication methods to suit your workflow.
+
+### 1. Qwen OAuth (Recommended)
+
+This method is the easiest to set up and provides the most generous free tier. It handles token management automatically.
+
+1. Simply run `codec` for the first time.
+2. The CLI will detect that you are not authenticated and will open a new browser window.
+3. Follow the on-screen instructions to log in with your Qwen account.
+4. Once the process is complete, the browser will redirect, and the CLI session will be authorized.
+
+**Benefits of Qwen OAuth:**
+
+- Zero manual token management.
+- High daily request limit (2,000 requests/day).
+- High request rate limit (60 requests/minute).
+- Tokens are automatically refreshed.
+
+### 2. OpenAI-Compatible API Keys
+
+For users who prefer to use other providers, Codec can be configured with an OpenAI-compatible API key.
+
+#### Method 1: Environment Variables
+
+This method is ideal for temporary or per-session configuration.
+
+```
+export OPENAI_API_KEY="your_api_key_here"
+export OPENAI_BASE_URL="your_api_endpoint"
+export OPENAI_MODEL="your_model_choice"
+
 ```
 
-## 📖 Usage Examples
-
-### Basic Usage
-Start CodeCraft in any directory:
+**Note:** The `OPENAI_BASE_URL` and `OPENAI_MODEL` variables are optional but highly recommended to specify the exact provider and model you wish to use.
+
+#### Method 2: `.env` File
 
-```bash
-cd your-project/
-codecraft
-```
-
-### Example Commands
+This is the recommended method for persistent, project-specific configuration.
+
+1. Create a file named `.env` in the root of your project directory.
+2. Add the following key-value pairs:
 
-**Generate a new application:**
-```bash
-codecraft
-> Create a React todo app with TypeScript and Tailwind CSS
-```
+   ```
+   OPENAI_API_KEY=your_api_key_here
+   OPENAI_BASE_URL=your_api_endpoint
+   OPENAI_MODEL=your_model_choice
+   
+   
+   ```
 
-**Analyze existing code:**
-```bash
-codecraft
-> Explain the architecture of this codebase and suggest improvements
-```
+Codec will automatically load these variables when it is run from that directory.
 
-**Code review assistance:**
-```bash
-codecraft
-> Review the changes in my latest commit and suggest optimizations
-```
+### Regional Provider Notes
 
-**Debug assistance:**
-```bash
-codecraft
-> Help me debug this error: [paste error message]
-```
+- **Mainland China:** Access Alibaba Cloud's Bailian or ModelScope. ModelScope offers a free tier of 2,000 calls per day.
+- **International:** Access Alibaba Cloud ModelStudio or OpenRouter, which also offers a free tier.
 
-### Working with Files
-Reference specific files in your prompts:
+## 5. Usage Examples
 
-```bash
-codecraft
-> @src/components/Header.tsx - Refactor this component to use hooks
-```
+### Exploring Codebases
 
-### Project Analysis
-Clone and analyze any repository:
+- **Summarize a project:**
 
-```bash
-git clone https://github.com/your-username/your-project
-cd your-project
-codecraft
-> Give me a summary of this project's structure and main features
-```
+  ```
+  > Summarize the main modules in this repository and describe their dependencies
+  
+  
+  ```
+- **Find specific code patterns:**
 
-## 🎯 Available Commands
+  ```
+  > Find all API endpoints and their associated authentication methods, and list them in a table
+  
+  
+  ```
 
-CodeCraft CLI includes several built-in commands to enhance your workflow:
+### Refactoring & Code Generation
 
-- `/help` - Show available commands and shortcuts
-- `/docs` - Open full CodeCraft CLI documentation in your browser
-- `/quit` - Exit the CLI
-- `/memory` - Manage conversation memory
-- `/stats` - Check session statistics
-- `/editor` - Set external editor preferences
-- `/compress` - Compress context by replacing it with a summary
+- **Improve code quality:**
 
-## 📊 Analytics & Privacy
+  ```
+  > Refactor the `dataParser.js` function to improve readability and add clear comments
+  
+  
+  ```
+- **Create new functionality:**
 
-CodeCraft CLI includes an optional analytics system to help improve the product. All analytics collection is user-controlled and can be disabled.
+  ```
+  > Create a new REST API endpoint in `server.js` for user authentication, including input validation and a JWT token response
+  
+  
+  ```
+- **Generate unit tests:**
 
-### Privacy Controls
-```bash
-# Disable analytics entirely
-ANALYTICS_ENABLED=false
+  ```
+  > Generate unit tests for the `authentication` module using Jest
+  
+  
+  ```
 
-# Disable collection of prompt content
-ANALYTICS_COLLECT_PROMPTS=false
+### Automating Workflows
 
-# Disable collection of user email
-ANALYTICS_COLLECT_EMAIL=false
-```
+- **Analyze git history:**
+
+  ```
+  > Analyze git commits from the last 7 days and summarize the key changes and features added
+  
+  
+  ```
+- **Generate changelogs:**
 
-## 🔄 Updating CodeCraft CLI
+  ```
+  > Create a changelog from recent commits, categorizing them into 'Features', 'Bug Fixes', and 'Chore'
+  
+  
+  ```
+- **Bulk file renaming:**
 
-Keep your CLI up to date with the latest features and improvements:
+  ```
+  > Rename all test files in the `src/tests` directory to follow the `*.test.ts` pattern
+  
+  
+  ```
 
-### Built-in Update Command
-```bash
-# From within the CLI
-/update
-```
+### Debugging & Security
 
-### Manual Update Methods
+- **Identify performance issues:**
 
-**NPM Global Installation:**
-```bash
-# Check current version
-npm list -g @google/gemini-cli
+  ```
+  > Identify potential performance bottlenecks in the `UserDashboard` React component
+  
+  
+  ```
+- **Check for vulnerabilities:**
 
-# Update to latest version
-npm update -g @google/gemini-cli
-```
+  ```
+  > Check the `user_login.php` file for potential SQL injection or cross-site scripting vulnerabilities
+  
+  
+  ```
 
-**Git Repository:**
-```bash
-# Navigate to CLI directory
-cd path/to/gemini-cli
+## 6. Session Management
 
-# Pull latest changes
-git pull origin main
+Codec provides a simple way to manage your conversation and token usage. This is crucial for controlling costs and ensuring you stay within context limits for long-running tasks.
 
-# Reinstall dependencies and rebuild
-npm install && npm run build
-```
+### Configuration File
 
-## 🔧 Troubleshooting
+You can set a hard limit on the number of tokens used per session.
 
-### Common Installation Issues
+1. Create a folder named `.qwen` in your home directory (`~/.qwen/`).
+2. Inside this folder, create a file named `settings.json`.
+3. Add the following JSON content, adjusting the value as needed:
 
-**Issue**: `npm install -g codecraft-cli` fails with permission errors
+   ```
+   {
+     "sessionTokenLimit": 32000
+   }
+   
+   
+   ```
 
-```bash
-# Solution: Use npx or fix npm permissions
-npx codecraft-cli
+This setting will cap the total token usage for any single `codec` session.
 
-# Or fix npm permissions (macOS/Linux):
-sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
-```
+### Session Commands
 
-**Issue**: `codecraft: command not found`
+- `/compress`: This command intelligently summarizes your conversation history, reducing the number of tokens used while attempting to preserve critical context. Use this before asking a new question in a long session.
+- `/clear`: Resets the current conversation session and clears all history, effectively starting a new conversation.
+- `/status`: Displays the current token usage for the active session, helping you monitor your limits.
 
-```bash
-# Solution: Check if npm global bin is in PATH
-npm config get prefix
-# Add the bin directory to your PATH in ~/.bashrc or ~/.zshrc
-export PATH="$(npm config get prefix)/bin:$PATH"
-```
+## 7. Commands & Shortcuts
 
-**Issue**: Authentication fails
+| Command            | Description                                                       |
+| :----------------- | :---------------------------------------------------------------- |
+| `/help`            | Displays a list of all available commands and their descriptions. |
+| `/clear`           | Resets the conversation history for the current session.          |
+| `/compress`        | Compresses the session history to reduce token usage.             |
+| `/status`          | Shows current token usage and session statistics.                 |
+| `/exit` or `/quit` | Exits the Codec CLI.                                              |
 
-```bash
-# Solution: Clear authentication cache and retry
-rm -rf ~/.codecraft/
-codecraft
-```
+| Shortcut        | Description                                                                       |
+| :-------------- | :-------------------------------------------------------------------------------- |
+| `Ctrl+C`        | Cancels the current AI operation (useful if a response is too long or incorrect). |
+| `Ctrl+D`        | Exits the Codec CLI.                                                              |
+| `Up/Down Arrow` | Navigates through your command history.                                           |
 
-**Issue**: Node.js version compatibility
+## 8. Best Practices for Efficient Use
 
-```bash
-# Check Node.js version (requires 18+)
-node --version
+- **Break Down Large Queries:** Instead of asking a single, overly broad question, break it into smaller, more focused tasks. This saves tokens and often leads to more accurate and specific results.
+- **Use **`/compress`**Proactively:**  When working on a complex problem over an extended period, periodically use the `/compress` command to manage the conversation history and prevent token overflow.
+- **Prefer Qwen OAuth:** If you have access, using Qwen OAuth is the easiest and most cost-effective way to use Codec due to its high free-tier limits and automatic management.
+- **Combine Tasks:** For efficiency, you can combine related tasks in a single prompt. For example: "Refactor this function to improve readability and generate JSDoc comments for it." This maintains a continuous context and reduces the number of requests.
+- **Leverage Automation:** Use Codec's automation features to their full potential. Instead of manually inspecting files or `git` history, let the tool do the heavy lifting.
 
-# Update Node.js if needed
-# Visit: https://nodejs.org/en/download
-```
+## 9. Troubleshooting
 
-## Getting Help
+- **Installation Errors:**
+  - **Solution:** Ensure you have Node.js version 20.0.0 or higher.
+- **Authentication Issues:**
+  - **Solution:** If using an API key, double-check that it is entered correctly in your `.env` file or environment variables. If using Qwen OAuth, re-run `codec` and follow the login prompt again.
+- **Token Limit Reached:**
+  - **Solution:** Use the `/compress` command to reduce your session history, or increase the `sessionTokenLimit` in your `settings.json` file.
+- **Unexpected Behavior:**
+  - **Solution:** Use `/clear` to reset the session and try your command again. If the issue persists, check the project's GitHub repository for known issues.
 
-- 📚 **Documentation**: [https://codecraft-team.netlify.app/docs](https://codecraft-team.netlify.app/docs)
-- 🐛 **Report Issues**: GitHub Issues
-- 💬 **Community Support**: Check our documentation for community resources
+## 10. Contributing
 
----
+Codec is an open-source project, and contributions are highly welcome. To contribute:
 
-## 👨‍💻 Developed By
+1. Fork the [GitHub repository](https://github.com/im-rahulr/qwen-code.git).
+2. Make your changes on a new branch.
+3. Submit a pull request following the project's contribution guidelines, which can be found in the `CONTRIBUTING.md` file within the repository.
 
-CodeCraft CLI is developed and maintained by **Rahul**.
+## 11. License
 
-🌐 **Developer Portfolio**: [https://im-rahul.netlify.app/#](https://im-rahul.netlify.app/#)
-
-### About the Developer
-Rahul is a passionate software developer focused on creating innovative AI-powered development tools. CodeCraft CLI represents his vision of making AI assistance accessible and powerful for developers worldwide.
-
-**Built with ❤️ by Rahul | Powered by Google Gemini AI**
-
-## 🎯 Popular Use Cases
-
-### 🔍 Explore a New Codebase
-Start by navigating to any repository and running CodeCraft:
-
-```bash
-cd your-project/
-codecraft
-> Describe the main pieces of this system's architecture and how they interact
-```
-
-```bash
-codecraft
-> What security mechanisms are in place in this application?
-```
-
-### 💻 Work with Your Existing Code
-```bash
-codecraft
-> Implement a first draft for GitHub issue #123 with proper error handling
-```
-
-```bash
-codecraft
-> Help me migrate this codebase to the latest version of Java. Start with a migration plan
-```
-
-### ⚡ Automate Your Workflows
-Use MCP servers to integrate your local system tools with your enterprise collaboration suite:
-
-```bash
-codecraft
-> Create a slide deck showing the git history from the last 7 days, grouped by feature and team member
-```
-
-```bash
-codecraft
-> Build a full-screen web app for a wall display to show our most interacted-with GitHub issues
-```
-
-### 🔧 System Integration
-```bash
-codecraft
-> Convert all images in this directory to PNG and rename them using dates from EXIF data
-```
-
-```bash
-codecraft
-> Organize my PDF invoices by month of expenditure and create a summary report
-```
-
-## Examples
-
-Once the CLI is running, you can start interacting with CodeCraft from your shell.
-
-You can start a project from a new directory:
-
-```bash
-cd new-project/
-codecraft
-> Write me a CodeCraft Discord bot that answers questions using a FAQ.md file I will provide
-```
-
-Or work with an existing project:
-
-```bash
-git clone https://github.com/im-rahulr/gemini-cli
-cd gemini-cli
-codecraft
-> Give me a summary of all of the changes that went in yesterday
-```
-
-## Next Steps
-
-- 📚 **Complete Documentation** - Full guide to CodeCraft CLI
-- 🛠️ **Available Commands** - All CLI commands and shortcuts
-- 🔧 **Troubleshooting Guide** - Common issues and solutions
-- 🏗️ **Architecture Overview** - How CodeCraft CLI works
-- 🤝 **Contributing Guide** - Help improve CodeCraft CLI
-
-## 📄 Terms of Service and Privacy Notice
-
-For details on the terms of service and privacy notice applicable to your use of CodeCraft CLI, see the Terms of Service and Privacy Notice.
+This project is licensed under the terms specified in the `LICENSE` file.
