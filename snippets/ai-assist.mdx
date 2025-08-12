@@ -2,7 +2,7 @@ export default function AIAssist() {
   const openAskAI = () => {
     try {
       const pageUrl = typeof window !== 'undefined' ? window.location.href : '';
-      const target = `/ask-ai?ref=${encodeURIComponent(pageUrl)}`;
+      const target = `https://your-domain.com/ask-ai?ref=${encodeURIComponent(pageUrl)}`;
       if (typeof navigator !== 'undefined' && navigator?.clipboard?.writeText) {
         navigator.clipboard.writeText(pageUrl).catch(() => {});
       }
